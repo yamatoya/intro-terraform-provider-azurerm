@@ -2,7 +2,7 @@ provider "azurerm" {
   version = "=1.28.0"
 }
 variable "prefix" {
-  default = "d01"
+  default = "d02"
 }
 resource "azurerm_resource_group" "main" {
   name = "${var.prefix}-resources"
@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_app_service_plan" "test" {
-  name                = "example-appserviceplan"
+  name                = "${var.prefix}-appserviceplan"
   location            = "${azurerm_resource_group.main.location}"
   resource_group_name = "${azurerm_resource_group.main.name}"
 
